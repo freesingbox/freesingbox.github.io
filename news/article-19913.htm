@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>C++定义全局变量的方法</title>
         <meta name="description" content="我们想定义一个全局变量，能够在多个文件中使用 //hello.h  #ifndef HELLO_H_ #define HELLO_H_ extern int a; void fun (); #endi" />
-        <link rel="icon" href="__ADDON__/img/freesingbox/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/freesingbox/favicon.ico" type="image/x-icon"/>
     <!-- Bootstrap -->
     <link href="/assets/website/css/freesingbox/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
@@ -88,7 +88,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p>我们想定义一个全局变量，能够在多个文件中使用</p> <pre class="has"><code>//hello.h  #ifndef HELLO_H_ #define HELLO_H_ extern int a; void fun (); #endif </code></pre> <pre class="has"><code>//hello.c  #include &lt;stdio.h&gt; #include "hello.h" int a = 0; void fun () { 	a = 1; 	printf("%d\n",a); }  </code></pre> <pre class="has"><code>//main.c    #include &lt;stdio.h&gt; #include "hello.h" int main () { 	fun(); 	a = 10; 	printf("%d\n",a); 	return 0; }  </code></pre> <p>输出结果为1，10；<br /> extern关键字来声明变量为外部变量，而为什么要在hello.h文件中已经extern int a了还要再在hello.c文件中定义int a呢？</p> <p>这是因为extern仅仅是作为一个声明，声明我要定义一个外部全局变量a可以在其他文件和模块中使用，但此时并为给a分配空间。<br /> 而int a = 0；则才是真正对a的定义，为其分配空间。<br /> 那么问题又来了，我们为什么不写成extern int a = 0;的形式不是更简单吗？</p> <p>这就涉及到c的一个基本知识点了也就是extern int a = 0和int a = 0同样都是对a的定义，只不过第二种是省略了extern而已。</p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="SingBoxNode官网订阅站" data-url="https://singboxnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>我们想定义一个全局变量，能够在多个文件中使用</p> <pre class="has"><code>//hello.h  #ifndef HELLO_H_ #define HELLO_H_ extern int a; void fun (); #endif </code></pre> <pre class="has"><code>//hello.c  #include &lt;stdio.h&gt; #include "hello.h" int a = 0; void fun () { 	a = 1; 	printf("%d\n",a); }  </code></pre> <pre class="has"><code>//main.c    #include &lt;stdio.h&gt; #include "hello.h" int main () { 	fun(); 	a = 10; 	printf("%d\n",a); 	return 0; }  </code></pre> <p>输出结果为1，10；<br /> extern关键字来声明变量为外部变量，而为什么要在hello.h文件中已经extern int a了还要再在hello.c文件中定义int a呢？</p> <p>这是因为extern仅仅是作为一个声明，声明我要定义一个外部全局变量a可以在其他文件和模块中使用，但此时并为给a分配空间。<br /> 而int a = 0；则才是真正对a的定义，为其分配空间。<br /> 那么问题又来了，我们为什么不写成extern int a = 0;的形式不是更简单吗？</p> <p>这就涉及到c的一个基本知识点了也就是extern int a = 0和int a = 0同样都是对a的定义，只不过第二种是省略了extern而已。</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-19458.htm">附近哪里有狗粮卖（附近哪里有狗粮卖的地方）</a></p>
                                         <p>下一个：<a href="/news/article-19914.htm">[转]图解分布式一致性协议Paxos</a></p>
@@ -101,16 +102,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-20369.htm" title="如何在HTML 5中将视频添加到网站背景">如何在HTML 5中将视频添加到网站背景</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-node-share-links.htm" title="「11月26日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月26日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-26-free-sing-box-node.htm" title="「8月26日」最高速度20.6M/S，2024年Singbox每天更新免费机场订阅节点链接">「8月26日」最高速度20.6M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-latest-sing-box-node.htm" title="「12月7日」最高速度20.2M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月7日」最高速度20.2M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-26-free-node-subscribe-links.htm" title="「9月26日」最高速度22.5M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月26日」最高速度22.5M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-9-sing-box-node-share.htm" title="「9月9日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月9日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-sing-box-node.htm" title="「12月4日」最高速度19.1M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月4日」最高速度19.1M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-10-7-node-share-links.htm" title="「10月7日」最高速度22.3M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月7日」最高速度22.3M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-19455.htm" title="Java并发工具学习（八）——Semaphore和Condition">Java并发工具学习（八）——Semaphore和Condition</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-14-free-node-subscribe.htm" title="「9月14日」最高速度22.4M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月14日」最高速度22.4M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-14-free-sing-box-node.htm" title="「10月14日」最高速度22.5M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月14日」最高速度22.5M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-subscribe-node.htm" title="「10月12日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月12日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-25-latest-sing-box-node.htm" title="「9月25日」最高速度22.1M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月25日」最高速度22.1M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-17-sing-box-node.htm" title="「11月17日」最高速度21.9M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月17日」最高速度21.9M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-21704.htm" title="动物检疫证明怎么开（动物检疫证明是什么样子的）">动物检疫证明怎么开（动物检疫证明是什么样子的）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-10-sing-box-github.htm" title="「9月10日」最高速度19.8M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月10日」最高速度19.8M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share-links.htm" title="「12月2日」最高速度18.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月2日」最高速度18.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-sing-box-node-github.htm" title="「11月19日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月19日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-6-today-sing-box-node.htm" title="「9月6日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月6日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -122,7 +123,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -153,6 +154,15 @@
                     <div class="footer-line"></div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                     <p>
                         <a href="/">Free Singbox节点订阅官网</a> 版权所有 Powered by WordPress
                     </p>
