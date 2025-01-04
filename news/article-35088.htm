@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesingbox.github.io/news/article-35088.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据库基础知识详解三：MVCC、范式以及表连接方式</title>
+        <meta name="description" content="写在文章前：本系列文章用于博主自己归纳复习一些基础知识，同时也分享给可能需要的人，因为水平有限，肯定存在诸多不足以及技术性错误，请大佬们及时指正。 8.MVCC 多版本并发控制（Multi-Versi" />
+        <link rel="icon" href="/assets/website/img/freesingbox/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/freesingbox/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/freesingbox/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freesingbox/fontello.css">
+    <link href="/assets/website/css/freesingbox/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freesingbox/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freesingbox/owl.theme.default.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VLC2BS6BYS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VLC2BS6BYS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo">
+                                                <a href="/">
+                            <span>Free Singbox</span>
+                        </a>
+                                            </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="navigation-wrapper">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/" title="首页">首页</a> </li>
+                                                                <li><a href="/free-nodes/" title="免费节点">免费节点</a> </li>
+                                                                <li><a href="/paid-subscribe/" title="推荐机场">推荐机场</a> </li>
+                                                                <li><a href="/news/" title="新闻资讯">新闻资讯</a> </li>
+                                                                <li><a href="#">关于</a> </li>
+                                <li><a href="#">联系</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header-close -->
+    <!-- page-header-start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">数据库基础知识详解三：MVCC、范式以及表连接方式</h1>
+                        <p class="page-text">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cources-start-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="SingBoxNode官网订阅站" data-url="https://singboxnode.github.io">
+                  				  				  				<p>写在文章前：本系列文章用于博主自己归纳复习一些基础知识，同时也分享给可能需要的人，因为水平有限，肯定存在诸多不足以及技术性错误，请大佬们及时指正。</p> <h2 id="8mvcc">8.MVCC</h2> <p><strong>多版本并发控制（Multi-Version Concurrency Control, MVCC）</strong>，MVCC在数据表中每行记录后面都保存有两个隐藏的列，用来存储<strong>更新信息的事务号：DB_TRX_ID</strong>和一个<strong>回滚指针：DB_ROLL_PTR</strong>（指向该行数据上一次修改前的数据，存储在undo log中）。</p> <p><strong>系统版本号</strong>：每开始一个新的事务，系统版本号就会自动递增）。（更新包括增删改）</p> <p><strong>更新事务号</strong>：更新一个数据行时的事务版本号（事务版本号：事务开始时的系统版本号。）</p> <p><strong>各种操作具体实现</strong>：</p> <ul> <li><strong>插入操作</strong>时，记录创建版本号。</li> <li><strong>删除操作</strong>时，记录删除版本号。</li> <li><strong>更新操作</strong>时，先记录删除版本号，再新增一行记录创建版本号。</li> <li><strong>查询操作</strong>时，要符合以下条件才能被查询出来：删除的版本号未定义或大于当前事务版本号（删除操作是在当前事务启动之后做的）。创建的版本号小于或等于当前事务版本号（创建操作是事务完成或者在事务启动之前完成）</li> </ul> <p>通过版本号减少了锁的争用，提高了系统性能。可以实现提交读和可重复读两种隔离级别，未提交读级别无需使用MVCC。</p> <p><strong>快照读</strong>：使用MVCC读取的是快照中的数据，这样可以减少加锁带来的开销。</p> <p><strong>当前读</strong>：读取的是最新的数据，需要加锁。</p> <blockquote> <p>问题：<strong>MVCC不是有类似生成快照的机制吗，为什么不能解决幻读？</strong></p> </blockquote> <p>我们设计一个实际案例：现在假设事务A的版本号为200：</p> <pre><code class="language-sql">select * from user, -- 其他操作 update user set level=1 where age&gt;0, select * from user</code></pre> <p>在事务A执行第一次select的语句时，假设查询出了三个用户。然后在事务A执行中间的其他操作时，事务B插入了一条新的用户数据，因为事务B的版本号为300，所以假设此时事务A查询，因为该行数据创建的版本号大于自己的版本号，所以不会被查询出。</p> <p>但是由于此时事务A刚好执行了下一条更新语句，而且恰好新插入的那行数据满足更新条件，它的更新版本号被修改为事务A的版本号，这导致事务A的第二次查询操作会查询出这条别的事务新插入的数据，这就造成了幻读的问题。</p> <p>MySQL是使用MVCC+Next Key Lock来解决幻读问题的，关于Next-Key Lock可以看博主数据库基础知识一的介绍。</p> <h2 id="9数据库的范式">9.数据库的范式</h2> <p>讲解数据库的范式之前，补充一下数据库中的基本概念：</p> <ul> <li><strong>主键</strong>：关系型数据库中的一条记录中有若干个属性，若其中某一个属性组(注意是组)能唯一标识一条记录，该属性组就可以成为一个主键（一张表只有一个，不允许重复，不允许为空）。</li> <li><strong>外键</strong>：外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致性。成绩表中的学号不是成绩表的主键，但它和学生表中的学号相对应，并且学生表中的学号是学生表的主键，则称成绩表中的学号是学生表的外键（一张表可以有多个，可以有重复的，可以是空值）。</li> <li><strong>元组</strong>：可以理解为数据表的某一行属性：可以理解为数据表的某一列，属性名就是列的字段。</li> <li><strong>候选码</strong>：某一属性组能唯一标识一个元组而其子集不能，则称该属性组为候选码。若有多个候选码，选择其中一个为主码。</li> <li><strong>主属性</strong>：候选码包含的属性（一个或多个）。</li> <li><strong>非主属性</strong>：顾名思义，就是候选码不包括的属性。</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/36031f57f0ba99b04ad5ccad0ec82e88.jpg" alt="数据库基础知识详解三：MVCC、范式以及表连接方式"></p> <p><strong>范式</strong>：</p> <ul> <li> <p><strong>第一范式（1NF，Normal Form）</strong>：属性不应该是可分的。举例：如果将“电话”作为一个属性（即数据表中的一列），是不符合1NF的，因为电话这个属性可以分解为家庭电话和移动电话。如果将“移动电话”作为一个属性，就符合1NF。</p> </li> <li> <p><strong>第二范式（2NF）</strong>：每个<strong>非主属性完全依赖于主属性集（候选键集）</strong>。B完全依赖于A，就是说A中的所有属性唯一决定B，属性少了就不能唯一决定，属性多了则有冗余（叫依赖不叫完全依赖）。</p> <p>举例：（学号，课程名）这个主属性集可以唯一决定成绩，但是对于学生姓名这个属性，（学号，课程名）这个属性集就是冗余的，所以学生姓名不完全依赖于（学号，课程名）这一属性集。</p> <blockquote> <p><strong>问题：那如何使其满足2NF？</strong></p> </blockquote> <p>可以通过分解来满足 2NF：将（学号，课程名，成绩）做成一张表；（学号，学生姓名）做成另一张表，避免大量的数据冗余； 满足1NF后，要求表中的所有列，都必须依赖于主键，而不能有任何一列与主键没有关系，也就是说一个表只描述一件事情。</p> </li> <li> <p><strong>第三范式（3NF）</strong>：在 2NF 的基础上，非主属性<strong>不传递依赖于主属性</strong>。</p> <p><strong>传递依赖</strong>：如果C依赖于B，B依赖于A，那么C传递依赖于A。3NF在2NF的基础上，消除了非主属性之间的依赖。</p> <p>比如一个表中，主属性有（学号），非主属性有（姓名，院系，院长名），可以看到院长名这个非主属性依赖于院系，传递依赖于学号。要求：表中的每一列只与主键直接相关而不是间接相关，（表中的每一列只能依赖于主键）。</p> <p>使一个2NF变成3NF的方法同样是分解，方法类似1NF变为2NF，这里不再赘述。</p> </li> </ul> <p><strong>不符合范式会出现哪些异常？</strong></p> <ul> <li><strong>冗余数据</strong>：某些同样的数据多次出现（如学生姓名）。</li> <li><strong>修改异常</strong>：修改了一个记录中的信息，另一个记录中相同的信息却没有修改。</li> <li><strong>删除异常</strong>：删除一个信息，那么也会丢失其它信息（删除一个课程，丢失了一个学生的信息）。</li> <li><strong>插入异常</strong>：无法插入（插入一个还没有课程信息的学生）。</li> </ul> <h2 id="10表连接方式">10.表连接方式</h2> <p>先创建两张简单的数据表以作后续的演示：</p> <table> <thead> <tr> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>学生表</td> <td><img decoding="async" src="https://img-blog.csdnimg.cn/bdadadc4d4864d5a8c22f5522cd7a264.png#pic_center" alt="在这里插入图片描述" loading="lazy"/></td> </tr> <tr> <td>成绩表</td> <td><img decoding="async" src="https://img-blog.csdnimg.cn/a76e058b52fb479f812bf9e38d6e5480.png#pic_center" alt="在这里插入图片描述" loading="lazy"/></td> </tr> </tbody> </table> <p><strong>内连接（Inner Join）</strong>：仅将两个表中满足连接条件的行组合起来作为结果集</p> <ul> <li><strong>自然连接</strong>：只考虑属性相同的元组对。</li> </ul> <p>示例：</p> <pre><code class="language-mysql">select * from student natural join grade;</code></pre> <p>结果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a16fc9ccb1f8f508c90aa53721e5e780.jpg" alt="数据库基础知识详解三：MVCC、范式以及表连接方式"></p> <p>没有给任何的条件，数据库自动把两张数据表各行有相同属性的行（元组）连接在了一起。</p> <ul> <li><strong>等值/连接</strong>：给定条件进行查询。</li> </ul> <p>示例：</p> <pre><code class="language-mysql">select * from student,grade where student.sno=grade.sno;</code></pre> <p>结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bd39fe3c0016687023a48bd8ddb5acb7.jpg" alt="数据库基础知识详解三：MVCC、范式以及表连接方式"></p> <p><strong>外连接（Outer Join）</strong></p> <ul> <li> <p><strong>左连接</strong>：左边表的所有数据都有显示出来，右边的表数据只显示共同有的那部分（就比如说成绩表和课程表连接，只显示两边有学号相等的，如果某一边的学号另一边没出现，那就不显示），没有对应的部分补NULL。</p> <p>示例：</p> <pre><code class="language-mysql">select * from student left outer join grade on student.sno=grade.sno;</code></pre> <p>结果：</p> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9b75253ee8e02e1eb9008da8356593e7.jpg" alt="数据库基础知识详解三：MVCC、范式以及表连接方式"></p> <ul> <li> <p><strong>右连接</strong>：和左连接相反。</p> <p>示例：</p> <pre><code class="language-mysql">select * from student left outer join grade on student.sno=grade.sno;</code></pre> <p>结果：</p> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/3f4ec15bda095f5a757d35412ee2a549.jpg" alt="数据库基础知识详解三：MVCC、范式以及表连接方式"></p> <ul> <li> <p><strong>全外连接（Full Outer Join）</strong>：查询出左表和右表所有数据，但是去除两表的重复数据。</p> <p>示例：</p> <p>原本SQL语句只应该需要类似：</p> <pre><code class="language-mysql">select * from student full outer join grade  on student.sno=grade.sno;</code></pre> <p>但因为MySQL不支持这样的全外连接，所以我们使用UNION来达到全外连接的效果：</p> <pre><code class="language-mysql">select * from student left join grade on student.sno=grade.sno union select * from student right join grade on student.sno=grade.sno;</code></pre> <p>结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f5bf7cc9a65be82ec7dba72d9411e627.jpg" alt="数据库基础知识详解三：MVCC、范式以及表连接方式"></p> </li> </ul> <p><strong>交叉连接（Cross Join）</strong>：返回两表的笛卡尔积（对于所含数据分别为m、n的表，返回m*n的结果）。</p> <p>示例：</p> <pre><code class="language-mysql">select * from student,grade;</code></pre> <p>结果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e5bb723abce376c489e47e9e328feefa.jpg" alt="数据库基础知识详解三：MVCC、范式以及表连接方式"></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34867.htm">动物疫苗市场规模排名 动物疫苗市场规模排名榜</a></p>
+                                        <p>下一个：<a href="/news/article-35089.htm">南京农大动物医院电话号码（南京农业大学动物医院电话）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-26822.htm" title="动物防疫计划名词解释（制定动物防疫计划的意义是什么）">动物防疫计划名词解释（制定动物防疫计划的意义是什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-free-high-speed-nodes.htm" title="「9月7日」最高速度19.9M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月7日」最高速度19.9M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-8-latest-sing-box-node.htm" title="「9月8日」最高速度22.6M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月8日」最高速度22.6M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-node-subscribe-links.htm" title="「12月3日」最高速度19.5M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月3日」最高速度19.5M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-6-today-sing-box-node.htm" title="「9月6日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月6日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-free-sing-box-node.htm" title="「9月5日」最高速度22M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月5日」最高速度22M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-9-sing-box-node-share.htm" title="「9月9日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月9日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-26347.htm" title="动物医院资质查询官网网址是什么（动物医院的号码是多少）">动物医院资质查询官网网址是什么（动物医院的号码是多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-sing-box-github.htm" title="「11月11日」最高速度22M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月11日」最高速度22M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-sing-box-node-github.htm" title="「11月13日」最高速度22.2M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月13日」最高速度22.2M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer start -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- footer-about-close -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="footer-line"></div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">Free Singbox节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="footer-social">
+                        <a href="#"><span><i class="fa fa-facebook"></i></span></a>
+                        <a href="#"><span><i class="fa fa-google-plus"></i></span> </a>
+                        <a href="#"><span class="active"><i class="fa fa-twitter"></i> </span></a>
+                        <a href="#"><span><i class="fa fa-instagram"></i></span> </a>
+                        <a href="#"><span><i class=" fa fa-pinterest"></i> </span></a>
+                        <a href="#"><span><i class="fa fa-linkedin"></i></span></a> </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-address-close -->
+    </div>
+    <!-- footer close -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/freesingbox/jquery-3.5.1.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/freesingbox/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/freesingbox/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/slider.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
