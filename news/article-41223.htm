@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freesingbox.github.io/news/article-41223.htm" />
@@ -9,6 +9,34 @@
     <title>ansible容器学习环境搭建教程</title>
         <meta name="description" content="想要学习ansible，只有一个节点肯定是不行的，而搭建虚拟机又是一件非常费时费力费资源的事情，所以通过docker 快速搭建一个容器学习环境是一个不错的选择   1.1需要安装些什么 Ansible" />
         <link rel="icon" href="/assets/website/img/freesingbox/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Singbox节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesingbox.github.io/news/article-41223.htm" />
+    <meta property="og:site_name" content="Free Singbox节点订阅官网" />
+    <meta property="og:title" content="ansible容器学习环境搭建教程" />
+    <meta property="og:image" content="https://freesingbox.github.io/uploads/20240823/c6f1138cc03c1bb72ffe755a7c3ea333.webp" />
+        <meta property="og:release_date" content="2025-01-15T09:51:21" />
+    <meta property="og:updated_time" content="2025-01-15T09:51:21" />
+        <meta property="og:description" content="想要学习ansible，只有一个节点肯定是不行的，而搭建虚拟机又是一件非常费时费力费资源的事情，所以通过docker 快速搭建一个容器学习环境是一个不错的选择   1.1需要安装些什么 Ansible" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ansible容器学习环境搭建教程">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Bootstrap -->
     <link href="/assets/website/css/freesingbox/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
@@ -102,16 +130,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-29149.htm" title="狗狗领养协议书怎么写的（领养狗狗签协议）">狗狗领养协议书怎么写的（领养狗狗签协议）</a></li>
-                        <li class="py-2"><a href="/news/article-31420.htm" title="宠物医院申办流程及手续（宠物医院申办流程及手续图片）">宠物医院申办流程及手续（宠物医院申办流程及手续图片）</a></li>
-                        <li class="py-2"><a href="/news/article-19914.htm" title="[转]图解分布式一致性协议Paxos">[转]图解分布式一致性协议Paxos</a></li>
-                        <li class="py-2"><a href="/news/article-26347.htm" title="动物医院资质查询官网网址是什么（动物医院的号码是多少）">动物医院资质查询官网网址是什么（动物医院的号码是多少）</a></li>
-                        <li class="py-2"><a href="/news/article-26822.htm" title="动物防疫计划名词解释（制定动物防疫计划的意义是什么）">动物防疫计划名词解释（制定动物防疫计划的意义是什么）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-high-speed-nodes.htm" title="「12月31日」最高速度18.3M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月31日」最高速度18.3M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-34388.htm" title="高并发下redis缓存常见问题">高并发下redis缓存常见问题</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-today-sing-box-node.htm" title="「10月10日」最高速度20.9M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月10日」最高速度20.9M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-2-latest-sing-box-node.htm" title="「1月2日」最高速度19.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月2日」最高速度19.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-24432.htm" title="Vuex入门mapState, mapGetters, mapMutations, mapActions详解终结篇带源码">Vuex入门mapState, mapGetters, mapMutations, mapActions详解终结篇带源码</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-sing-box-node-github.htm" title="「11月13日」最高速度22.2M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月13日」最高速度22.2M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-40233.htm" title="南京宠物猫领养中心地址在哪里呀（南京宠物猫领养中心地址在哪里呀多少钱）">南京宠物猫领养中心地址在哪里呀（南京宠物猫领养中心地址在哪里呀多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-20828.htm" title="Vue实现评论功能">Vue实现评论功能</a></li>
+                        <li class="py-2"><a href="/news/article-30573.htm" title="兽用疫苗如何保存 兽用疫苗如何保存最好">兽用疫苗如何保存 兽用疫苗如何保存最好</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-node-share.htm" title="「1月10日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月10日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-27287.htm" title="tensorflow（三） 模型保存">tensorflow（三） 模型保存</a></li>
+                        <li class="py-2"><a href="/news/article-46187.htm" title="@Order的使用与Aop多切面的执行顺序">@Order的使用与Aop多切面的执行顺序</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-sing-box-node-github.htm" title="「11月19日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月19日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-49152.htm" title="Spark系列Spark StreamingDStreams转换">Spark系列Spark StreamingDStreams转换</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-sing-box-node-share.htm" title="「1月27日」最高速度18.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月27日」最高速度18.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -123,16 +151,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freesingbox.github.io/news/article-34866.htm" />
@@ -9,6 +9,34 @@
     <title>python中，用pyspark读写Hive数据</title>
         <meta name="description" content="1、读Hive表数据 &nbsp; &nbsp; &nbsp; &nbsp; pyspark读取hive数据非常简单，因为它有专门的接口来读取，完全不需要像hbase那样，需要做很多配置，pyspar" />
         <link rel="icon" href="/assets/website/img/freesingbox/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Singbox节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesingbox.github.io/news/article-34866.htm" />
+    <meta property="og:site_name" content="Free Singbox节点订阅官网" />
+    <meta property="og:title" content="python中，用pyspark读写Hive数据" />
+    <meta property="og:image" content="https://freesingbox.github.io/uploads/20240823/d69485da0c08bf37c40c6c16f151d28a.webp" />
+        <meta property="og:release_date" content="2025-01-02T10:00:14" />
+    <meta property="og:updated_time" content="2025-01-02T10:00:14" />
+        <meta property="og:description" content="1、读Hive表数据 &nbsp; &nbsp; &nbsp; &nbsp; pyspark读取hive数据非常简单，因为它有专门的接口来读取，完全不需要像hbase那样，需要做很多配置，pyspar" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python中，用pyspark读写Hive数据">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Bootstrap -->
     <link href="/assets/website/css/freesingbox/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
@@ -102,16 +130,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-24433.htm" title="动物疫苗哪里有卖（动物疫苗在哪里购买）">动物疫苗哪里有卖（动物疫苗在哪里购买）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-high-speed-nodes.htm" title="「12月14日」最高速度19.2M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月14日」最高速度19.2M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-35619.htm" title="动物疫苗注射工作注意事项有哪些（动物疫苗注射工作注意事项有哪些要求）">动物疫苗注射工作注意事项有哪些（动物疫苗注射工作注意事项有哪些要求）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-node-share-links.htm" title="「11月30日」最高速度20.6M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月30日」最高速度20.6M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-29614.htm" title="springboot集成elasticsearch注意事项">springboot集成elasticsearch注意事项</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-3-latest-sing-box-node.htm" title="「11月3日」最高速度22.6M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月3日」最高速度22.6M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-30-sing-box-node.htm" title="「12月30日」最高速度20.3M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月30日」最高速度20.3M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-34867.htm" title="动物疫苗市场规模排名 动物疫苗市场规模排名榜">动物疫苗市场规模排名 动物疫苗市场规模排名榜</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-12-sing-box-node.htm" title="「11月12日」最高速度20.3M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月12日」最高速度20.3M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-8-sing-box-node-windows.htm" title="「12月8日」最高速度18.3M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月8日」最高速度18.3M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-45183.htm" title="深圳宠物领养机构电话（深圳宠物领养中心）">深圳宠物领养机构电话（深圳宠物领养中心）</a></li>
+                        <li class="py-2"><a href="/news/article-47647.htm" title="在同一个类中，一个方法调用另外一个有注解（比如@Async，@Transational）的方法，注解失效的原因和解决方法">在同一个类中，一个方法调用另外一个有注解（比如@Async，@Transational）的方法，注解失效的原因和解决方法</a></li>
+                        <li class="py-2"><a href="/news/article-26822.htm" title="动物防疫计划名词解释（制定动物防疫计划的意义是什么）">动物防疫计划名词解释（制定动物防疫计划的意义是什么）</a></li>
+                        <li class="py-2"><a href="/news/article-40233.htm" title="南京宠物猫领养中心地址在哪里呀（南京宠物猫领养中心地址在哪里呀多少钱）">南京宠物猫领养中心地址在哪里呀（南京宠物猫领养中心地址在哪里呀多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-32957.htm" title="宠物粮食品牌取名怎么取好听点（宠物粮品牌起名字）">宠物粮食品牌取名怎么取好听点（宠物粮品牌起名字）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-today-sing-box-node.htm" title="「1月29日」最高速度19.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月29日」最高速度19.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-19000.htm" title="五八同城领养宠物可信吗（五八同城领养宠物可信吗）">五八同城领养宠物可信吗（五八同城领养宠物可信吗）</a></li>
+                        <li class="py-2"><a href="/news/article-28686.htm" title="宠物疫苗可以上地铁吗北京（北京宠物猫可以上地铁吗）">宠物疫苗可以上地铁吗北京（北京宠物猫可以上地铁吗）</a></li>
+                        <li class="py-2"><a href="/news/article-31048.htm" title="宠物医院大众点评评语（宠物医院大众点评100字点评***）">宠物医院大众点评评语（宠物医院大众点评100字点评***）</a></li>
+                        <li class="py-2"><a href="/news/article-19455.htm" title="Java并发工具学习（八）——Semaphore和Condition">Java并发工具学习（八）——Semaphore和Condition</a></li>
                     </ul>
     </div>
 </div>
@@ -123,16 +151,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

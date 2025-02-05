@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freesingbox.github.io/news/article-34388.htm" />
@@ -9,6 +9,34 @@
     <title>高并发下redis缓存常见问题</title>
         <meta name="description" content="redis作为缓存，与数据库一起给系统提供数据服务，redis不只是提供了查询访问的高性能响应，而且屏蔽了大量的对数据库的查询请求，避免了高并发下数据库被击溃的问题。 对于应用了缓存的数据，可以粗略的" />
         <link rel="icon" href="/assets/website/img/freesingbox/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Singbox节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesingbox.github.io/news/article-34388.htm" />
+    <meta property="og:site_name" content="Free Singbox节点订阅官网" />
+    <meta property="og:title" content="高并发下redis缓存常见问题" />
+    <meta property="og:image" content="https://freesingbox.github.io/uploads/20240823/ffa8b1aa8bbb3b7e7d2c2d668056c39f.webp" />
+        <meta property="og:release_date" content="2025-01-01T06:40:27" />
+    <meta property="og:updated_time" content="2025-01-01T06:40:27" />
+        <meta property="og:description" content="redis作为缓存，与数据库一起给系统提供数据服务，redis不只是提供了查询访问的高性能响应，而且屏蔽了大量的对数据库的查询请求，避免了高并发下数据库被击溃的问题。 对于应用了缓存的数据，可以粗略的" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="高并发下redis缓存常见问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Bootstrap -->
     <link href="/assets/website/css/freesingbox/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
@@ -102,16 +130,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-1-2-latest-sing-box-node.htm" title="「1月2日」最高速度19.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月2日」最高速度19.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-24432.htm" title="Vuex入门mapState, mapGetters, mapMutations, mapActions详解终结篇带源码">Vuex入门mapState, mapGetters, mapMutations, mapActions详解终结篇带源码</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-25-free-subscribe-node.htm" title="「8月25日」最高速度19.5M/S，2024年Singbox每天更新免费机场订阅节点链接">「8月25日」最高速度19.5M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-13-today-sing-box-node.htm" title="「10月13日」最高速度18.6M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月13日」最高速度18.6M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-8-free-high-speed-nodes.htm" title="「10月8日」最高速度21.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月8日」最高速度21.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-1-free-node-subscribe.htm" title="「10月1日」最高速度21.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月1日」最高速度21.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-26346.htm" title="排序算法详解（java代码实现）_在线工具">排序算法详解（java代码实现）_在线工具</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-6-today-sing-box-node.htm" title="「9月6日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月6日」最高速度19.4M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-sing-box-node-windows.htm" title="「12月13日」最高速度20.9M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月13日」最高速度20.9M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-21289.htm" title="人打的狂犬和动物打的狂犬一样吗 人打的狂犬和动物打的狂犬一样吗图片">人打的狂犬和动物打的狂犬一样吗 人打的狂犬和动物打的狂犬一样吗图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-sing-box-node-share.htm" title="「12月19日」最高速度21.8M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月19日」最高速度21.8M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-47178.htm" title="动物预防接种计划表 动物预防接种计划表格">动物预防接种计划表 动物预防接种计划表格</a></li>
+                        <li class="py-2"><a href="/news/article-38245.htm" title="想领养狗狗哪里可以领养（在哪里能领养狗）">想领养狗狗哪里可以领养（在哪里能领养狗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-free-subscribe-node.htm" title="「1月12日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月12日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-node-share-links.htm" title="「11月22日」最高速度19M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月22日」最高速度19M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-23118.htm" title="SpringBoot集成redis简要_在线工具">SpringBoot集成redis简要_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-node-subscribe-links.htm" title="「1月25日」最高速度21.6M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月25日」最高速度21.6M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-sing-box-github.htm" title="「12月22日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月22日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-35619.htm" title="动物疫苗注射工作注意事项有哪些（动物疫苗注射工作注意事项有哪些要求）">动物疫苗注射工作注意事项有哪些（动物疫苗注射工作注意事项有哪些要求）</a></li>
+                        <li class="py-2"><a href="/news/article-28683.htm" title="Spring Cloud Feign 分析之FeignClient注解实现版本兼容">Spring Cloud Feign 分析之FeignClient注解实现版本兼容</a></li>
                     </ul>
     </div>
 </div>
@@ -123,22 +151,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

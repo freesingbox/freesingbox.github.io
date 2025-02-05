@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freesingbox.github.io/news/article-25438.htm" />
@@ -9,6 +9,34 @@
     <title>Java 通过手写分布式雪花SnowFlake生成ID方法详解_java</title>
         <meta name="description" content="目录  SnowFlake算法 SnowFlake优点 SnowFlake不足    SnowFlake算法 SnowFlake算法生成id的结果是一个64bit大小的整数，它的结构如下图：  分为四" />
         <link rel="icon" href="/assets/website/img/freesingbox/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Singbox节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesingbox.github.io/news/article-25438.htm" />
+    <meta property="og:site_name" content="Free Singbox节点订阅官网" />
+    <meta property="og:title" content="Java 通过手写分布式雪花SnowFlake生成ID方法详解_java" />
+    <meta property="og:image" content="https://freesingbox.github.io/uploads/20240823/ffa8b1aa8bbb3b7e7d2c2d668056c39f.webp" />
+        <meta property="og:release_date" content="2024-12-13T12:05:13" />
+    <meta property="og:updated_time" content="2024-12-13T12:05:13" />
+        <meta property="og:description" content="目录  SnowFlake算法 SnowFlake优点 SnowFlake不足    SnowFlake算法 SnowFlake算法生成id的结果是一个64bit大小的整数，它的结构如下图：  分为四" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java 通过手写分布式雪花SnowFlake生成ID方法详解_java">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Bootstrap -->
     <link href="/assets/website/css/freesingbox/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
@@ -102,16 +130,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-23592.htm" title="AOT和单文件发布对程序性能的影响">AOT和单文件发布对程序性能的影响</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-10-sing-box-github.htm" title="「9月10日」最高速度19.8M/S，2024年Singbox每天更新免费机场订阅节点链接">「9月10日」最高速度19.8M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-node-share-links.htm" title="「11月16日」最高速度18.8M/S，2024年Singbox每天更新免费机场订阅节点链接">「11月16日」最高速度18.8M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/news/article-28222.htm" title="公务员2021国考报名人数统计 公务员2021国考报名人数统计表">公务员2021国考报名人数统计 公务员2021国考报名人数统计表</a></li>
-                        <li class="py-2"><a href="/news/article-28686.htm" title="宠物疫苗可以上地铁吗北京（北京宠物猫可以上地铁吗）">宠物疫苗可以上地铁吗北京（北京宠物猫可以上地铁吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-22-sing-box-github.htm" title="「12月22日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月22日」最高速度20M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-23-free-node-subscribe.htm" title="「10月23日」最高速度18.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月23日」最高速度18.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-18-sing-box-node-github.htm" title="「10月18日」最高速度21.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月18日」最高速度21.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-9-today-sing-box-node.htm" title="「10月9日」最高速度22.2M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月9日」最高速度22.2M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-25-today-sing-box-node.htm" title="「10月25日」最高速度22.3M/S，2024年Singbox每天更新免费机场订阅节点链接">「10月25日」最高速度22.3M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-37781.htm" title="动物疫苗审批管理制度（动物疫苗经营许可证办理条件）">动物疫苗审批管理制度（动物疫苗经营许可证办理条件）</a></li>
+                        <li class="py-2"><a href="/news/article-50164.htm" title="vue3-setup中使用mapState">vue3-setup中使用mapState</a></li>
+                        <li class="py-2"><a href="/news/article-35089.htm" title="南京农大动物医院电话号码（南京农业大学动物医院电话）">南京农大动物医院电话号码（南京农业大学动物医院电话）</a></li>
+                        <li class="py-2"><a href="/news/article-50165.htm" title="同城免费领养宠物软件下载（同城免费领养宠物软件下载大全）">同城免费领养宠物软件下载（同城免费领养宠物软件下载大全）</a></li>
+                        <li class="py-2"><a href="/news/article-44219.htm" title="Vue项目如何设置反向代理和cookie设置问题_vue.js">Vue项目如何设置反向代理和cookie设置问题_vue.js</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-today-sing-box-node.htm" title="「1月8日」最高速度20.7M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月8日」最高速度20.7M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-sing-box-node.htm" title="「1月1日」最高速度23M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月1日」最高速度23M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-34867.htm" title="动物疫苗市场规模排名 动物疫苗市场规模排名榜">动物疫苗市场规模排名 动物疫苗市场规模排名榜</a></li>
+                        <li class="py-2"><a href="/news/article-36116.htm" title="宠物粮基地哪里的好（宠物粮批发进货渠道）">宠物粮基地哪里的好（宠物粮批发进货渠道）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-high-speed-nodes.htm" title="「12月26日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接">「12月26日」最高速度19.7M/S，2024年Singbox每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -123,22 +151,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
