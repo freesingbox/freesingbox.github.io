@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesingbox.github.io/news/article-71877.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>详解MySQL索引</title>
+        <meta name="description" content="原文链接详解MySQL索引 索引介绍 索引是帮助MySQL高效获取数据的数据结构。在数据之外，数据库系统还维护着一个用来查找数据的数据结构，这些数据结构指向着特定的数据，可以实现高级的查找算法。 本文" />
+        <link rel="icon" href="/assets/website/img/freesingbox/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Singbox节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesingbox.github.io/news/article-71877.htm" />
+    <meta property="og:site_name" content="Free Singbox节点订阅官网" />
+    <meta property="og:title" content="详解MySQL索引" />
+    <meta property="og:image" content="https://freesingbox.github.io/uploads/20240823/54eb6ac16c9f552fc2e7f9a6dd768fc0.webp" />
+        <meta property="og:release_date" content="2025-03-11T07:48:38" />
+    <meta property="og:updated_time" content="2025-03-11T07:48:38" />
+        <meta property="og:description" content="原文链接详解MySQL索引 索引介绍 索引是帮助MySQL高效获取数据的数据结构。在数据之外，数据库系统还维护着一个用来查找数据的数据结构，这些数据结构指向着特定的数据，可以实现高级的查找算法。 本文" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="详解MySQL索引">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/freesingbox/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/freesingbox/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freesingbox/fontello.css">
+    <link href="/assets/website/css/freesingbox/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freesingbox/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freesingbox/owl.theme.default.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VLC2BS6BYS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VLC2BS6BYS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>Free Singbox</span>
+                                                </a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="navigation-wrapper">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/" title="首页">首页</a> </li>
+                                                                <li><a href="/free-nodes/" title="免费节点">免费节点</a> </li>
+                                                                <li><a href="/paid-subscribe/" title="推荐机场">推荐机场</a> </li>
+                                                                <li><a href="/client.htm" title="客户端">客户端</a> </li>
+                                                                <li><a href="/news/" title="新闻资讯">新闻资讯</a> </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header-close -->
+    <!-- page-header-start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">详解MySQL索引</h1>
+                        <p class="page-text">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cources-start-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="SingBoxNode官网订阅站" data-url="https://singboxnode.github.io">
+                  				  				  				<p>原文链接<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sjdwz.com/11190.html"  target="_blank" rel="nofollow">详解MySQL索引</a></p> <h2 id="索引介绍">索引介绍</h2> <p>索引是帮助MySQL高效获取数据的数据结构。在数据之外，数据库系统还维护着一个用来查找数据的数据结构，这些数据结构指向着特定的数据，可以实现高级的查找算法。</p> <p>本文以MySQL常用的B+Tree来介绍。（MySQL的索引结构不仅只有B+Tree索引，还有Hash索引等。）</p> <h2 id="btree俗称b树">B+Tree（俗称B+树）</h2> <p>我们构造一个具有如下数据的4阶B+树;数字如下：100,26,78,102,657,123,90,12,67,89,90,102,365,256</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0acd02850c43b545d98b40f66fc4a2e8.jpg" alt="详解MySQL索引"></p> <p>我们可以发现，所有的数据都会出现在<strong>叶子节点</strong>（也就是最底部的节点，下面再没有分层），非叶子节点作为key（B+树如何分裂的在此不过多介绍，因为本文只为介绍索引，介绍B+树也只是为了能更好的理解索引，B+树并不是本文的重点。）</p> <p><strong>B+树规定，小于往左走，大于等于往右走；</strong></p> <p>那么如果我们想查询<strong>值为26</strong>的数据，B+树是如何查询的呢？</p> <p>1.首先它会和最顶部的<strong>100</strong>比较，发现比100小，向左走；</p> <p>2.到达了存储key为<strong>78和90</strong>两个值的节点，发现26比78小，再向78的左边走；</p> <p>3.到达了存储12，26，67的叶子节点，在此就查询到了值为26的数据；</p> <p>那么我们如果想查询值为100的数据呢？</p> <p>首先它会和最顶部的<strong>100</strong>比较，发现等于100，但是非叶子节点只存储key，还会向叶子方向走；大于等于往右走，小于往左走，直到找到叶子节点。</p> <p>MySQL的索引对B+Tree还做了改良，叶子之间的链表变成了双向链表。</p> <h2 id="索引分类">索引分类</h2> <p>在MySQL数据库，将索引的具体类型主要分为以下几类：</p> <h3 id="主键索引唯一索引常规索引全文索引">主键索引、唯一索引、常规索引、全文索引</h3> <table> <thead> <tr> <th>分类</th> <th>含义</th> <th>特点</th> <th></th> </tr> </thead> <tbody> <tr> <td>主键索引</td> <td>针对于表中主键创建的索引</td> <td>默认自动创建, 只能 有一个</td> <td>PRIMARY</td> </tr> <tr> <td>唯一索引</td> <td>避免同一个表中某数据列中的值重复</td> <td>可以有多个</td> <td>UNIQUE</td> </tr> <tr> <td>常规索引</td> <td>快速定位特定数据</td> <td>可以有多个</td> <td></td> </tr> <tr> <td>全文索引</td> <td>全文索引查找的是文本中的关键词，而不是比较索引中的值</td> <td>可以有多个</td> <td>FULLTEXT</td> </tr> </tbody> </table> <h3 id="聚集索引二级索引">聚集索引、二级索引</h3> <p>在InnoDB存储引擎中（一般我们使用的大都是InnoDB存储引擎，MySQL除InnoDB存储引擎外，还有MyISAM存储引擎等，本文不过多介绍），根据索引的存储形式，又可以分为以下两种：</p> <p>聚集索引和二级索引</p> <table> <thead> <tr> <th>分类</th> <th>含义</th> <th>特点</th> </tr> </thead> <tbody> <tr> <td>聚集索引</td> <td>数据存储与索引放到了一块，索引结构的叶子 节点保存了行数据</td> <td>必须有,而且只 有一个</td> </tr> <tr> <td>二级索引</td> <td>数据与索引分开存储，索引结构的叶子节点关 联的是对应的主键</td> <td>可以存在多个</td> </tr> </tbody> </table> <p>我们介绍一下聚集索引的选取规则：</p> <p>聚集索引选取规则:</p> <p>1.如果存在主键，主键索引就是聚集索引；</p> <p>2.如果不存在主键，将使用第一个唯一（UNIQUE）索引作为聚集索引；</p> <p>3.如果表没有主键，或没有合适的唯一索引，则InnoDB会自动生成一个rowid作为隐藏的聚集索引。</p> <h3 id="聚集索引和二级索引的区别">聚集索引和二级索引的区别</h3> <p><strong>聚集索引的叶子节点下挂的是这一行的数据 。</strong></p> <p><strong>二级索引的叶子节点下挂的是该字段值对应的主键值。</strong></p> <p>如果我的表user_test里有两个字段id和name，id是主键，name上有二级索引；</p> <p>第一条sql：select * from user_test where id = 6;</p> <p>第二条sql：select * from user_test where name = '郭靖';</p> <p>第一条sql在使用聚集索引查询数据的时候，到达叶子节点，就直接能够查询到这行数据了；第二条sql在使用二级索引查询数据的时候，到达叶子节点，只是拿到了这行数据对应的主键，还需要进行回表查询，才能拿到数据。</p> <h2 id="索引语法">索引语法</h2> <p>我们创建一张表，表结构如下：</p> <pre><code class="language-sql">SET NAMES utf8mb4; SET FOREIGN_KEY_CHECKS = 0;  -- ---------------------------- -- Table structure for tbl_student -- ---------------------------- DROP TABLE IF EXISTS `tbl_student`; CREATE TABLE `tbl_student`  (   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',   `stu_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',   `stu_num` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '学号',   PRIMARY KEY (`id`) USING BTREE ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '学生表' ROW_FORMAT = Dynamic;  -- ---------------------------- -- Records of tbl_student -- ---------------------------- INSERT INTO `tbl_student` VALUES (1, '杨过', '001'); INSERT INTO `tbl_student` VALUES (2, '小龙女', '002'); INSERT INTO `tbl_student` VALUES (3, '黄蓉', '003'); INSERT INTO `tbl_student` VALUES (4, '郭靖', '004');  SET FOREIGN_KEY_CHECKS = 1;</code></pre> <p>表创建完成之后，如下所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/035ef9b6f31a5899ce6c5c31d7b18ec3.jpg" alt="详解MySQL索引"></p> <h3 id="查询索引">查询索引</h3> <p>语法如下：</p> <pre><code class="language-sql">SHOW INDEX FROM 表名 ;</code></pre> <p>案例如下：</p> <pre><code class="language-sql">show index from tbl_student;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/eee5535aff5eecd515f07a7cbf05f0ed.jpg" alt="详解MySQL索引"></p> <p>因为我们表里有主键，所以它会有一个默认的主键索引。</p> <h3 id="创建索引">创建索引</h3> <p>语法如下：</p> <pre><code class="language-sql">CREATE [ UNIQUE | FULLTEXT ] INDEX 索引的名字 ON 表名 ( 需要加索引的列1,需要加索引的列2,...) ;</code></pre> <p>[ UNIQUE | FULLTEXT ]分别表示唯一索引和常规索引；</p> <p>案例1如下：</p> <pre><code class="language-sql">-- 为姓名创建一个索引（因为名字有可能会重复，所以我们不能建立唯一索引，建一个常规索引就行了） CREATE  INDEX idx_tbl_student_name ON tbl_student (stu_name) ;</code></pre> <p>如图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/8659df0477584ac6208627ca42d347c8.jpg" alt="详解MySQL索引"></p> <p>案例2如下：</p> <pre><code class="language-sql">-- 为学号创建一个索引（因为学号不会重复，我们建一个唯一索引） CREATE UNIQUE INDEX idx_tbl_student_num ON tbl_student (stu_num) ;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a6b04d95a0bd2ee9978fd02b78a7e2f5.jpg" alt="详解MySQL索引"></p> <p>我们现在再查看一下这个表的索引</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/5769e2e907e5fe77dbaa52a776ea4173.jpg" alt="详解MySQL索引"></p> <h3 id="删除索引">删除索引</h3> <p>语法如下：</p> <pre><code class="language-sql">DROP INDEX 索引名 ON 表名 ;</code></pre> <p>案例如下：</p> <pre><code class="language-sql">drop index idx_tbl_student_name on tbl_student;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/dcdb5fc5e20f4e4afea621b918454dab.jpg" alt="详解MySQL索引"></p> <p>再来看一下索引：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/1f095d5c00c076f3031d76732f8b1d4e.jpg" alt="详解MySQL索引"></p> <p>可以看到只剩两个索引了。</p> <h2 id="sql性能分析explain介绍">sql性能分析——explain介绍</h2> <p>EXPLAIN 或者 DESC命令获取 MySQL 如何执行 SELECT 语句的信息，包括在 SELECT 语句执行 过程中表如何连接和连接的顺序。</p> <p>语法如下：</p> <pre><code>-- 直接在select语句之前加上关键字 explain / desc explain select的语句</code></pre> <p>案例如下：</p> <pre><code class="language-sql">explain select * from tbl_student;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6c4d61e3d5ccce429d40962923e7b5b3.jpg" alt="详解MySQL索引"></p> <h3 id="输出的重要字段介绍">输出的重要字段介绍</h3> <h3 id="可先不看通过后面的例子理解着记忆">可先不看，通过后面的例子理解着记忆</h3> <table> <thead> <tr> <th>字段</th> <th>含义</th> </tr> </thead> <tbody> <tr> <td>id</td> <td>select查询的序列号，表示查询中执行select子句或者是操作表的顺序 (id相同，执行顺序从上到下；id不同，值越大，越先执行)</td> </tr> <tr> <td>select_type</td> <td>表示 SELECT 的类型，常见的取值有 SIMPLE（简单表，即不使用表连接 或者子查询）、PRIMARY（主查询，即外层的查询）、 UNION（UNION 中的第二个或者后面的查询语句）、 SUBQUERY（SELECT/WHERE之后包含了子查询）等</td> </tr> <tr> <td>type</td> <td>表示连接类型，性能由好到差的连接类型为NULL、system、const、 eq_ref、ref、range、 index、all</td> </tr> <tr> <td>possible_key</td> <td>显示这条查询语句可能应用在这张表上的索引，一个或多个</td> </tr> <tr> <td>key</td> <td>实际使用的索引，如果为NULL，则没有使用索引</td> </tr> <tr> <td>key_len</td> <td>表示索引中使用的字节数， 该值为索引字段最大可能长度，并非实际使用长度，在不损失精确性的前提下， 长度越短越好</td> </tr> <tr> <td>rows</td> <td>MySQL认为必须要执行查询的行数，在innodb引擎的表中，是一个估计值， 可能并不总是准确的。</td> </tr> <tr> <td>filtered</td> <td>表示返回结果的行数占需读取行数的百分比， filtered 的值越大越好。</td> </tr> </tbody> </table> <h4 id="准备演示的表">准备演示的表：</h4> <pre><code class="language-sql">SET NAMES utf8mb4; SET FOREIGN_KEY_CHECKS = 0;  -- ---------------------------- -- Table structure for tbl_user_info -- ---------------------------- DROP TABLE IF EXISTS `tbl_user_info`; CREATE TABLE `tbl_user_info`  (   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',   `user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',   `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',   `nick_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '昵称',   `birthday` date NULL DEFAULT NULL COMMENT '生日',   `sex` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别，0代表女，1代表男',   PRIMARY KEY (`id`) USING BTREE ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;  SET FOREIGN_KEY_CHECKS = 1;</code></pre> <p>我使用java批量插入了100万条数据，如下sql使用了batch，可以很快速得插入大量数据。</p> <p>java代码如下：</p> <pre><code class="language-java">//注意在链接数据库时请指定参数jdbc:mysql://xxxxxxxxxx:3306/test?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;rewriteBatchedStatements=true" public static void main(String[] args) {         long start = System.currentTimeMillis();    //  获取系统当前时间，方法开始执行前记录         Connection conn = BaseDAO.getConn();        //  调用刚刚写好的用于获取连接数据库对象的静态工具类         String sql = "insert into tbl_user_info values(null,?,?,?,?,?)";  //  要执行的sql语句         PreparedStatement ps = null;         Random rd = new Random(); 		//插入1000万条数据，一百万插入一次         for (int j = 0; j &lt; 10; j++) {             long innerStart = System.currentTimeMillis();             try {                 ps = conn.prepareStatement(sql);    //  获取PreparedStatement对象                 //  不断产生sql                 for (int i = 0; i &lt; 1000000; i++) {                     String s = UUID.randomUUID().toString();                     ps.setString(1, s);                     ps.setString(2, UUID.randomUUID().toString());                     ps.setString(3, s.substring(0,8));                     ps.setDate(4,new java.sql.Date(randomDate("1970-01-21","2000-01-11").getTime()));                     ps.setString(5,rd.nextInt(2)+"");                     ps.addBatch();  //  将一组参数添加到此 PreparedStatement 对象的批处理命令中。                 }                 int[] ints = ps.executeBatch();//   将一批命令提交给数据库来执行，如果全部命令执行成功，则返回更新计数组成的数组。                 //  如果数组长度不为0，则说明sql语句成功执行，即千万条数据添加成功！                 if (ints.length &gt; 0) {                     System.out.println("已成功添加一百万条数据！！");                 }             } catch (SQLException throwables) {                 throwables.printStackTrace();             }             long innerEnd = System.currentTimeMillis();              System.out.println("所用时长:" + (innerEnd - innerStart) / 1000 + "秒");         }          BaseDAO.closeAll(conn, ps);          long end = System.currentTimeMillis();         System.out.println("插入1000万条数据共用时长:" + (end - start) / 1000 + "秒");     }      private static Date randomDate(String beginDate, String  endDate ){          try {              SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");              Date start = format.parse(beginDate);//构造开始日期              Date end = format.parse(endDate);//构造结束日期          //getTime()表示返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象表示的毫秒数。              if(start.getTime() &gt;= end.getTime()){                  return null;              }              long date = random(start.getTime(),end.getTime());              return new Date(date);          } catch (Exception e) {              e.printStackTrace();          }          return null;      }      private static long random(long begin,long end){          long rtn = begin + (long)(Math.random() * (end - begin));      //如果返回的是开始时间和结束时间，则递归调用本函数查找随机值          if(rtn == begin || rtn == end){              return random(begin,end);          }          return rtn;      }</code></pre> <p>运行完输出如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/8113f9c892d0055c00e759235fe86805.jpg" alt="详解MySQL索引"></p> <p>表中信息截取如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ff558afbb69a0a7f2bbda8f41c944f3d.jpg" alt="详解MySQL索引"></p> <pre><code class="language-sql">select count(*) from tbl_user_info;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/464cf5695a2d4248abad83805d74a22c.jpg" alt="详解MySQL索引"></p> <h2 id="通过主键索引来查询数据">通过主键索引来查询数据</h2> <p>查看索引，目前只有主键索引。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/213aefe295b474be111becd91e71f642.jpg" alt="详解MySQL索引"></p> <p>我们通过主键来搜索一下数据：</p> <pre><code class="language-sql">select * from  tbl_user_info where id = '1000';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/835ed3147536e80b46f9e1d0136722f7.jpg" alt="详解MySQL索引"></p> <p>可以看到千万级数据查询只用了0.174秒。</p> <h3 id="explain分析">explain分析</h3> <pre><code class="language-sql">explain select * from  tbl_user_info where id = '1000';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/91f6d78dbdf21ba57c1083d4963caf56.jpg" alt="详解MySQL索引"></p> <p>通过explain分析</p> <p>type是const，性能已经很高；</p> <p>possible_key是PRIMARY，说明可能用到的索引是主键索引；</p> <p>key 是PRIMARY，说明实际用到的索引是主键索引；</p> <p>key_len是4，说明使用该索引时使用的字节数是4；</p> <h2 id="通过user_name查询数据">通过user_name查询数据</h2> <p>查看索引，目前只有主键索引。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/213aefe295b474be111becd91e71f642.jpg" alt="详解MySQL索引"></p> <h3 id="无索引时分析">无索引时分析</h3> <pre><code class="language-sql">select * from tbl_user_info where user_name = '1a2e86b1-9685-40f8-982d-035974dab5a8';</code></pre> <p>运行结果如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/63bda1f6c93d0d5a206073d748689879.jpg" alt="详解MySQL索引"></p> <p>可以看到8.471s；</p> <h3 id="explain分析-1">explain分析</h3> <pre><code class="language-sql">explain select * from tbl_user_info where user_name = '1a2e86b1-9685-40f8-982d-035974dab5a8';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/eb0b1ac7c21d6bbb72cfa9502e1fa864.jpg" alt="详解MySQL索引"></p> <p>可以看到type是ALL，性能很差。</p> <h3 id="有索引时分析">有索引时分析</h3> <h4 id="建立索引">建立索引</h4> <pre><code class="language-sql">create index idx_userinfo_user_name on tbl_user_info(user_name);</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/aab6179f15c9e2d043f51ddf45a1d77a.jpg" alt="详解MySQL索引"></p> <p>可以看到创建索引的过程需要的时间是140多秒，因为它要建立B+树！</p> <h3 id="再次查询">再次查询</h3> <pre><code class="language-sql">select * from tbl_user_info where user_name = '1a2e86b1-9685-40f8-982d-035974dab5a8';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/241a25591790c9e6cde0ec4de8b99d67.jpg" alt="详解MySQL索引"></p> <p>可以看到查询时间降到了0.157秒；</p> <p>为避免MySQL的缓存，我们换个值来查询一下：</p> <pre><code class="language-sql">select * from tbl_user_info where user_name = 'e1928532-9e16-4095-bb4c-1ef5c5afa354';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d4f0234e124f29448ea50771e63f761b.jpg" alt="详解MySQL索引"></p> <p>可以看到还是不到2秒。</p> <p>这提升的速度已经很可观了。</p> <h3 id="explain分析-2">explain分析</h3> <pre><code class="language-sql">explain select * from tbl_user_info where user_name = 'e1928532-9e16-4095-bb4c-1ef5c5afa354';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c53872ef2a6d2c288106c740d8cfc2f7.jpg" alt="详解MySQL索引"></p> <p>通过explain分析</p> <p>type是ref，性能已经很高；</p> <p>possible_key是idx_userinfo_user_name，说明可能用到的索引是我们刚才创建的索引idx_userinfo_user_name；</p> <p>key 是idx_userinfo_user_name，说明实际用到的索引是idx_userinfo_user_name；</p> <p>key_len是152，说明使用该索引时使用的字节数是152；</p> <h2 id="最左前缀法则">最左前缀法则</h2> <p>如果索引了多列（联合索引），要遵守最左前缀法则。最左前缀法则指的是查询从索引的最左列开始， 并且不跳过索引中的列。如果跳跃某一列，索引将会部分失效(后面的字段索引失效)。最左边的列必须存在！</p> <p>在介绍之前，为避免干扰，我们先把刚才建立的user_name索引删掉；</p> <pre><code class="language-sql">drop index idx_userinfo_user_name on tbl_user_info;</code></pre> <h3 id="介绍">介绍</h3> <p>我们对tbl_user_info的user_name,password和sex建立联合索引；</p> <pre><code class="language-sql">create index idx_userinfo_username_password_sex on tbl_user_info(user_name,`password`,sex);</code></pre> <p><strong>请记住我们建立索引的顺序：user_name,password和sex</strong>；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/15ff2caf5197e0039ef1394d736f4f28.jpg" alt="详解MySQL索引"></p> <p>查询索引：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/34cdd265a170292e3fe07de05b108ab0.jpg" alt="详解MySQL索引"></p> <p>可见，在这三个列上都出现了这个联合索引。</p> <h3 id="user_namepasswordsex三个条件查询">user_name,password,sex三个条件查询</h3> <pre><code class="language-sql">select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab' and `password` = 'dc9e428a-6e19-4172-8a97-5d38b560cf02' and sex = 1;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9ecae3fc9f00133e8680f311c9db89cb.jpg" alt="详解MySQL索引"></p> <p>可以看到查询速度是0.173秒；</p> <h4 id="explain分析-3">explain分析</h4> <pre><code class="language-sql">explain select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab' and `password` = 'dc9e428a-6e19-4172-8a97-5d38b560cf02' and sex = 1;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/275fd46047993406195a04e755de13b5.jpg" alt="详解MySQL索引"></p> <p>通过explain分析</p> <p>type是ref，性能已经很高；</p> <p>possible_key是idx_userinfo_username_password_sex，说明可能用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key 是idx_userinfo_username_password_sex，说明实际用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key_len是304，说明使用该索引时使用的字节数是304；</p> <h3 id="使用user_namepassword查询">使用user_name,password查询</h3> <pre><code class="language-sql">select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab' and `password` = 'dc9e428a-6e19-4172-8a97-5d38b560cf02';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4fed1374f652bca7bb496edf36517265.jpg" alt="详解MySQL索引"></p> <p>我们可以看到查询速度是0.208秒；</p> <h4 id="explain分析-4">explain分析</h4> <pre><code class="language-sql">explain select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab' and `password` = 'dc9e428a-6e19-4172-8a97-5d38b560cf02';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/859f820b01f5c9537dfceb1bbd90ce6e.jpg" alt="详解MySQL索引"></p> <p>type是ref，性能已经很高；</p> <p>possible_key是idx_userinfo_username_password_sex，说明可能用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key 是idx_userinfo_username_password_sex，说明实际用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key_len是304，说明使用该索引时使用的字节数是304；</p> <h3 id="使用user_name查询">使用user_name查询</h3> <pre><code class="language-sql">select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/fcdaf277f8b1ef8ca3822c7bf35bc36a.jpg" alt="详解MySQL索引"></p> <p>速度是0.150s；</p> <h4 id="explain分析-5">explain分析</h4> <pre><code class="language-sql">explain select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/393bc3fa84f1b5e22d35b07d2010d2c3.jpg" alt="详解MySQL索引"></p> <p>type是ref，性能已经很高；</p> <p>possible_key是idx_userinfo_username_password_sex，说明可能用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key 是idx_userinfo_username_password_sex，说明实际用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key_len是152，说明使用该索引时使用的字节数是152；</p> <h3 id="只使用password查询">只使用password查询</h3> <pre><code class="language-sql">select * from tbl_user_info where password = '06903570-d9d4-49cb-915f-5883b26692bd';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/e8d456c9f2bbd93d48e5732e32246716.jpg" alt="详解MySQL索引"></p> <p>查询速度时9秒多！</p> <h4 id="explain分析-6">explain分析</h4> <pre><code class="language-sql">explain select * from tbl_user_info where password = '06903570-d9d4-49cb-915f-5883b26692bd';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d82699042b0011273ce7a9a27f3452ee.jpg" alt="详解MySQL索引"></p> <p>type是ALL，性能很差；</p> <p><strong>没有用到索引；</strong></p> <h3 id="只使用sex">只使用sex</h3> <pre><code class="language-sql">select * from tbl_user_info where sex = 1;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6d6c2c094a6baaeeaf7d39dad63f028c.jpg" alt="详解MySQL索引"></p> <p>查询了740多秒还没查出来，给它停了。</p> <h4 id="explain分析-7">explain分析</h4> <pre><code class="language-sql">explain select * from tbl_user_info where sex = 1;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/33b7c833444ed2ebe4d0ef29ad7fb564.jpg" alt="详解MySQL索引"></p> <p>type是ALL，性能很差；</p> <p><strong>没有用到索引；</strong></p> <h3 id="使用user_name和sex查询">使用user_name和sex查询</h3> <pre><code class="language-sql">select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab' and sex = 1;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a54c455857f49cc8dc09b5df69662dc6.jpg" alt="详解MySQL索引"></p> <h4 id="explain分析-8">explain分析</h4> <pre><code class="language-sql">explain select * from tbl_user_info where user_name = '226807ba-f6f5-4dd4-b93f-0fdf2fcd06ab' and sex = 1;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4078ff0e98f37786adf95b03109ece86.jpg" alt="详解MySQL索引"></p> <p>type是ref，性能已经很高；</p> <p>possible_key是idx_userinfo_username_password_sex，说明可能用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key 是idx_userinfo_username_password_sex，说明实际用到的索引是联合索引idx_userinfo_user_name,idx_userinfo_username_password_sex；</p> <p>key_len是152，说明使用该索引时使用的字节数是152；</p> <h3 id="使用password和sex查询">使用password和sex查询</h3> <pre><code class="language-sql">select * from tbl_user_info where `password` = '06903570-d9d4-49cb-915f-5883b26692bd' and sex = 0;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6ccdb30f673b6511de9ccc3ccd8e4b33.jpg" alt="详解MySQL索引"></p> <p>使用了8秒多。</p> <h4 id="explain分析-9">explain分析</h4> <pre><code class="language-sql">select * from tbl_user_info where `password` = '06903570-d9d4-49cb-915f-5883b26692bd' and sex = 0;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6d4d932604155162dad7a05ab72580bd.jpg" alt="详解MySQL索引"></p> <p>type是ALL，性能很差；</p> <p><strong>没有用到索引；</strong></p> <h3 id="最左前缀法则总结">最左前缀法则总结</h3> <p>如果索引了多列（联合索引），要遵守最左前缀法则。最左前缀法则指的是查询从索引的最左列开始， 并且不跳过索引中的列。如果跳跃某一列，索引将会部分失效(后面的字段索引失效)。最左边的列必须存在！</p> <h2 id="范围查询">范围查询</h2> <p>联合索引中，出现范围查询(&gt;,&lt;)，范围查询右侧的列索引失效。</p> <p>在介绍之前，我们新建一个表来进行演示；之前那个表的sex是char类型的，不好通过索引使用的长度来分析某一列是否用到了索引；</p> <pre><code class="language-sql">SET NAMES utf8mb4; SET FOREIGN_KEY_CHECKS = 0;  -- ---------------------------- -- Table structure for student -- ---------------------------- DROP TABLE IF EXISTS `student`; CREATE TABLE `student`  (   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',   `name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',   `num` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '学号',   `age` int(10) NULL DEFAULT NULL COMMENT '年龄',   PRIMARY KEY (`id`) USING BTREE ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '学生表' ROW_FORMAT = Dynamic;  -- ---------------------------- -- Records of student -- ---------------------------- INSERT INTO `student` VALUES (1, '杨过', '001', 18); INSERT INTO `student` VALUES (2, '小龙女', '002', 36); INSERT INTO `student` VALUES (3, '黄蓉', '003', 58); INSERT INTO `student` VALUES (4, '郭靖', '004', 60);  SET FOREIGN_KEY_CHECKS = 1;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d8610c386b42ff98f05d079d7a43e5c2.jpg" alt="详解MySQL索引"></p> <h3 id="创建索引-1">创建索引</h3> <p>先查看下索引：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ecc8a1ac292721fb929c7b11b6cafb95.jpg" alt="详解MySQL索引"></p> <p>只有主键索引</p> <pre><code class="language-sql">create index idx_student_name_age_num on student(`name`,age,num);</code></pre> <p>请记好顺序，name，age，num；</p> <h3 id="使用三个条件不加范围">使用三个条件（不加范围）</h3> <pre><code class="language-sql">explain select * from student where `name` = '小龙女' and  age = 36 and num='002' ;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cbd95d7575fed4b52f1d51b12d871524.jpg" alt="详解MySQL索引"></p> <p><strong>key_len是91.</strong></p> <h3 id="三个条件age带范围">三个条件（age带范围）</h3> <pre><code class="language-sql">explain select * from student where `name` = '小龙女' and  age &gt; 30 and num='002' ;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6f53fbd6b508edcd718156edfe9457f3.jpg" alt="详解MySQL索引"></p> <p>key_len是48了，比91小，范围查询右侧的列索引失效。</p> <pre><code class="language-sql">explain select * from student where `name` = '小龙女' and  age &gt;= 30 and num='002' ;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/be1b390d51b76dfa05344fdf051aee76.jpg" alt="详解MySQL索引"></p> <p>如果是大于等于，就用上了。</p> <h2 id="索引失效情况">索引失效情况</h2> <h3 id="在索引列上运算">在索引列上运算</h3> <p>在索引列上加运算会失效；</p> <p>执行如下sql，删掉之前的联合索引，为学号建立一个唯一索引。</p> <pre><code class="language-sql">drop index idx_student_name_age_num on student; create unique index idx_student_num on student(`num`);</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9518d23d5ff7a11cea33d2aec383394e.jpg" alt="详解MySQL索引"></p> <h4 id="在索引列上运算查询分析">在索引列上运算查询分析</h4> <pre><code class="language-sql">explain select * from student where substring(num,0,2) = '00';</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/28827343592fa97557d32d0487e71c04.jpg" alt="详解MySQL索引"></p> <p>没有用到索引。</p> <h3 id="字符串不加引号">字符串不加引号</h3> <pre><code class="language-sql">explain select * from student where num = 00;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/7af816132c2c3091eba8d39cfafc4b73.jpg" alt="详解MySQL索引"></p> <p>没有走索引。</p> <h3 id="模糊查询">模糊查询</h3> <p>尾部模糊匹配，索引不会失效。如果是头部模糊匹配，索引将会失效。</p> <p>我们重新使用tbl_user_info这个表，来进行演示。为什么不用student表了呢？（因为数据量较少，MySQL会去判断走索引和全表扫描的效率都如何，有可能会自己选择了全表扫描）。</p> <p>将tbl_user_info的索引都删掉（为方便演示，我重建了表，然后只插入了1w条数据，不然建索引的时间太长）。</p> <pre><code class="language-sql">create index idx_userinfo_username_password_birthday on tbl_user_info(user_name,`password`,birthday);</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a4f1873e497ea6a540e0958034f0ced6.jpg" alt="详解MySQL索引"></p> <h4 id="三个等值条件">三个等值条件</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f817e8da0d73789984f27695320ed03a.jpg" alt="详解MySQL索引"></p> <h4 id="头部like">头部like</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a66eb9d0a535c07ae66b91a2498d497f.jpg" alt="详解MySQL索引"></p> <p>key_len是152，长度小于308，没有走索引；</p> <h4 id="尾部like">尾部like</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f7ecf4b0d4ea5ada737bfcc30b28a321.jpg" alt="详解MySQL索引"></p> <p>key_len等于308，走索引了。</p> <h3 id="or连接条件">or连接条件</h3> <p>用or分割开的条件， 如果or前的条件中的列有索引，而后面的列中没有索引，那么涉及的索引都不会 被用到。</p> <p>tbl_user_info的nick_name没有索引</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/69eaa8fe4c07c8d058b0b91b1a9ebb8a.jpg" alt="详解MySQL索引"></p> <p>即使id有主键索引，也没有用到。</p> <h3 id="数据分布影响">数据分布影响</h3> <p>如果MySQL评估使用索引比全表更慢，则不使用索引。is null 、is not null是否走索引，得具体情况具体 分析，并不是固定的。</p> <h2 id="sql提示">sql提示</h2> <p>我们可以告诉MySQL数据库使用哪个索引，忽略哪个索引；</p> <p>语法：</p> <p>use index ： 建议MySQL使用哪一个索引完成此次查询（仅仅是建议，mysql内部还会再次进 行评估）。</p> <p>force index ： 强制使用索引。</p> <p>ignore index ： 忽略指定的索引。</p> <p>一般使用在某一列有多个索引和我们不想让MySQL自己去评判是否走索引时使用。</p> <p>案例</p> <pre><code class="language-sql">select * from tbl_user_info force index(idx_userinfo_username_password_birthday) where user_name = '441db937-d99d-499f-8a3e-8cf95176b086' and `password` = '1232432' and birthday = '2022-01-01'; -- 其他两个类似</code></pre> <h2 id="覆盖索引">覆盖索引</h2> <p>尽量使用覆盖索引，减少select *。  覆盖索引是指查询使用了索引，并且需要返回的列，在该索引中已经全部能够找到 。</p> <p>比如我想查询tbl_user_info的user_name字段，我给它加了单列索引，我如果使用select * 的话，因为没有存储其他列，还需要回表查询；如果我是select user_name，那么直接就能查出来了。</p> <h2 id="前缀索引">前缀索引</h2> <p>当字段类型为字符串（varchar，text，longtext等）时，有时候需要索引很长的字符串，这会让索引变得很大，查询时，浪费大量的磁盘IO， 影响查询效率。此时可以只将字符串的一部分前缀，建立索引，这样可以大大节约索引空间，从而提高索引效率。</p> <p>语法</p> <pre><code class="language-sql">create index 索引名 on 表名(列名(长度)) ;</code></pre> <p>前缀索引的索引长度可以根据如下计算：</p> <pre><code class="language-sql">select count(distinct substring(`password`,1,5)) from tbl_user_info;    select count(*) from tbl_user_info;</code></pre> <p>第一行得出的值除以第二行得出的值，越接近1，查询效率越高。从使用的空间和效率上做平衡。（是否需要牺牲空间换时间）</p> <h2 id="索引设计原则">索引设计原则</h2> <p>1.针对于数据量较大，且查询比较频繁的表建立索引。</p> <p>2.针对于常作为查询条件（where）、排序（order by）、分组（group by）操作的字段建立索引。</p> <p>3.尽量选择区分度高的列作为索引，尽量建立唯一索引，区分度越高，使用索引的效率越高。</p> <p>4.尽量使用联合索引，减少单列索引，查询时，联合索引很多时候可以覆盖索引，节省存储空间， 避免回表，提高查询效率。</p> <p>5.要控制索引的数量，索引并不是多多益善，索引越多，维护索引结构的代价也就越大，会影响增删改的效率。</p> <p>原文链接<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sjdwz.com/11190.html"  target="_blank" rel="nofollow">详解MySQL索引</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71240.htm">人打的狂犬疫苗和动物打的一样吗 人打的狂犬疫苗和动物打的一样吗多少钱</a></p>
+                                        <p>下一个：<a href="/news/article-71880.htm">中国兽药十强企业排名（中国兽药公司前50名）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-free-node-subscribe.htm" title="「1月30日」最高速度22.1M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月30日」最高速度22.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-40232.htm" title="动物防疫补贴政策依据（动物防疫等补助经费管理办法实施细则）">动物防疫补贴政策依据（动物防疫等补助经费管理办法实施细则）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-free-sing-box-node.htm" title="「2月11日」最高速度21.1M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月11日」最高速度21.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-today-sing-box-node.htm" title="「1月21日」最高速度20.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月21日」最高速度20.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-46188.htm" title="猫三联一共几针,多少钱2020（猫三联一共几针,多少钱大同）">猫三联一共几针,多少钱2020（猫三联一共几针,多少钱大同）</a></li>
+                        <li class="py-2"><a href="/news/article-41708.htm" title="vue如何将对象中所有的key赋为空值_vue.js">vue如何将对象中所有的key赋为空值_vue.js</a></li>
+                        <li class="py-2"><a href="/news/article-60649.htm" title="动物防疫疫苗的运输规定（动物防疫疫苗的运输规定有哪些）">动物防疫疫苗的运输规定（动物防疫疫苗的运输规定有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-45183.htm" title="深圳宠物领养机构电话（深圳宠物领养中心）">深圳宠物领养机构电话（深圳宠物领养中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-node-share.htm" title="「1月10日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月10日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-sing-box-node.htm" title="「1月20日」最高速度20.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月20日」最高速度20.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer start -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- footer-about-close -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="footer-line"></div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">Free Singbox节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="footer-social">
+                        <a href="#"><span><i class="fa fa-facebook"></i></span></a>
+                        <a href="#"><span><i class="fa fa-google-plus"></i></span> </a>
+                        <a href="#"><span class="active"><i class="fa fa-twitter"></i> </span></a>
+                        <a href="#"><span><i class="fa fa-instagram"></i></span> </a>
+                        <a href="#"><span><i class=" fa fa-pinterest"></i> </span></a>
+                        <a href="#"><span><i class="fa fa-linkedin"></i></span></a> </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-address-close -->
+    </div>
+    <!-- footer close -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/freesingbox/jquery-3.5.1.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/freesingbox/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/freesingbox/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/freesingbox/slider.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
