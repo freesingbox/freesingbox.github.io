@@ -877,3 +877,7 @@ hr,.post-hr{border-bottom: 1px solid #e6e7e9;
 
 .header-wrapper .logo h1, .header-wrapper .logo span {font-size: 3.5rem;font-weight: bold;}
 .xcblog-blog-list .item {margin-bottom: 1.5rem;}
+
+.xcblog-blog-detail.xcblog-blog-detail-defined p {font-size: 1.5rem;line-height: 2.2rem;}
+.xcblog-blog-detail.xcblog-blog-detail-defined h2 {font-size: 2.5rem;}
+.xcblog-blog-detail.xcblog-blog-detail-defined h3 {font-size: 2.0rem;}
