@@ -242,12 +242,13 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2025-12-27-free-high-speed-nodes.htm">「12月27日」最高速度22.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></p>
+        <p>下一个：<a href="/free-nodes/2026-1-1-sing-box-github.htm">「1月1日」最高速度21.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 可以按协议类型分流吗？</h5></div>
+    <div class="panel-heading"><h5>Nekobox 是否能与其他客户端共存？</h5></div>
     <div class="panel-body">
-        支持。用户可按 TCP、UDP 或特定应用协议分流流量，结合策略组，实现游戏加速、视频优化或广告屏蔽等定制化网络策略，提高访问速度和稳定性。<hr />    </div>
+        可以。Nekobox 配置独立，不影响其他客户端的运行。用户可同时安装 Clash、Mellow 或 Shadowrocket，按需切换使用，互不干扰。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
@@ -255,14 +256,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否能与其他客户端共存？</h5></div>
-    <div class="panel-body">
-        可以。Nekobox 配置独立，不影响其他客户端的运行。用户可同时安装 Clash、Mellow 或 Shadowrocket，按需切换使用，互不干扰。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Matsuri 如何结合 Xray 内核实现多协议支持？</h5></div>
     <div class="panel-body">
         Matsuri 可加载 Xray 核心，通过配置多 inbound/outbound 模块实现 VMess、VLess、Trojan 等协议共存。用户可在单一服务端配置文件中同时支持多客户端访问，便于统一管理。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>何为 multiplex (mux)，启用后会有哪些利弊？</h5></div>
+    <div class="panel-body">
+        mux 是多路复用技术，可在单一连接上传输多路流量，从而减少握手次数与连接开销。优点是提升短连接并发效率，缺点是在丢包或单连接异常时可能影响多条会话并增加调试复杂度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 节点分组如何保证低延迟访问？</h5></div>
@@ -270,9 +271,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         将节点按延迟、地区或用途分组，并启用策略组，系统会根据节点健康和延迟自动选择最佳节点。保证网页浏览、视频播放和游戏流量的低延迟稳定连接。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 支持按端口进行流量分流吗？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 可以按协议类型分流吗？</h5></div>
     <div class="panel-body">
-        支持。用户可以根据端口号将不同应用流量分流到指定节点。例如游戏走低延迟节点，浏览网页走普通节点，实现精准流量管理和优化网络访问速度。<hr />    </div>
+        支持。用户可按 TCP、UDP 或特定应用协议分流流量，结合策略组，实现游戏加速、视频优化或广告屏蔽等定制化网络策略，提高访问速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Matsuri 项目是什么？</h5></div>
@@ -280,19 +281,19 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Matsuri 是基于 sing-box 的跨平台 GUI 客户端，界面现代，支持多种协议和分流方式。它提供直观的节点管理和日志监控功能，适合喜欢图形化操作的用户。Matsuri 的设计目标是简洁、高效、易于上手。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置不同用户的带宽限制？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户设置独立的带宽上限和流量配额。超过配额后可自动阻断或降速，确保服务器资源合理分配，避免单个用户占用过多带宽而影响其他用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 节点分类管理有什么作用？</h5></div>
     <div class="panel-body">
         节点分类可按地区、延迟或用途分组，结合策略组实现自动分流。方便管理大量节点，快速选择最优节点，提高访问速度和连接稳定性，优化网络管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>何为 multiplex (mux)，启用后会有哪些利弊？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 支持按端口进行流量分流吗？</h5></div>
     <div class="panel-body">
-        mux 是多路复用技术，可在单一连接上传输多路流量，从而减少握手次数与连接开销。优点是提升短连接并发效率，缺点是在丢包或单连接异常时可能影响多条会话并增加调试复杂度。    </div>
+        支持。用户可以根据端口号将不同应用流量分流到指定节点。例如游戏走低延迟节点，浏览网页走普通节点，实现精准流量管理和优化网络访问速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何设置不同用户的带宽限制？</h5></div>
+    <div class="panel-body">
+        管理员可为每个用户设置独立的带宽上限和流量配额。超过配额后可自动阻断或降速，确保服务器资源合理分配，避免单个用户占用过多带宽而影响其他用户体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -321,16 +322,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-12-8-free-high-speed-nodes.htm" title="「12月8日」最高速度18.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月8日」最高速度18.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-28-sing-box-node-github.htm" title="「11月28日」最高速度22.3M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月28日」最高速度22.3M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-subscribe-node.htm" title="「12月2日」最高速度21.1M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月2日」最高速度21.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-5-free-subscribe-node.htm" title="「11月5日」最高速度23M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月5日」最高速度23M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-19-latest-sing-box-node.htm" title="「11月19日」最高速度21M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月19日」最高速度21M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-9-node-share.htm" title="「11月9日」最高速度18.9M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月9日」最高速度18.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-1-node-share-links.htm" title="「12月1日」最高速度19.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月1日」最高速度19.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-12-node-share-links.htm" title="「11月12日」最高速度21.9M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月12日」最高速度21.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-19-sing-box-node-windows.htm" title="「12月19日」最高速度21.9M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月19日」最高速度21.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-30-free-node-subscribe.htm" title="「11月30日」最高速度20.2M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月30日」最高速度20.2M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-2-free-sing-box-node.htm" title="「1月2日」最高速度22.2M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月2日」最高速度22.2M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-8-free-high-speed-nodes.htm" title="「12月8日」最高速度18.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月8日」最高速度18.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-27-free-high-speed-nodes.htm" title="「11月27日」最高速度18.6M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月27日」最高速度18.6M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-3-sing-box-node-share.htm" title="「12月3日」最高速度22.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月3日」最高速度22.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-14-sing-box-node-share.htm" title="「11月14日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月14日」最高速度18.7M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-23-today-sing-box-node.htm" title="「12月23日」最高速度20.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月23日」最高速度20.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-26-sing-box-node.htm" title="「12月26日」最高速度22.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月26日」最高速度22.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-16-free-sing-box-node.htm" title="「12月16日」最高速度18.9M/S，2025年Singbox每天更新免费机场订阅节点链接">「12月16日」最高速度18.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -341,6 +342,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+            </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
