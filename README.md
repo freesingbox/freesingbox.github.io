@@ -1,4 +1,4 @@
-# 「2月20日」最高速度20M/S，2025年Singbox每天更新免费机场订阅节点链接  更新时间 2026-02-20 16:56:48
+# 「3月4日」最高速度23M/S，2025年Singbox每天更新免费机场订阅节点链接  更新时间 2026-03-04 09:18:51
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freesingbox.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://freesingbox.github.io/uploads/2026/02/0-20260220.yaml
-- https://freesingbox.github.io/uploads/2026/02/1-20260220.yaml
-- https://freesingbox.github.io/uploads/2026/02/2-20260220.yaml
-- https://freesingbox.github.io/uploads/2026/02/3-20260220.yaml
-- https://freesingbox.github.io/uploads/2026/02/4-20260220.yaml
+- https://freesingbox.github.io/uploads/2026/03/0-20260304.yaml
+- https://freesingbox.github.io/uploads/2026/03/1-20260304.yaml
+- https://freesingbox.github.io/uploads/2026/03/2-20260304.yaml
+- https://freesingbox.github.io/uploads/2026/03/3-20260304.yaml
+- https://freesingbox.github.io/uploads/2026/03/4-20260304.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://freesingbox.github.io/uploads/2026/02/0-20260220.txt
-- https://freesingbox.github.io/uploads/2026/02/1-20260220.txt
-- https://freesingbox.github.io/uploads/2026/02/2-20260220.txt
-- https://freesingbox.github.io/uploads/2026/02/3-20260220.txt
-- https://freesingbox.github.io/uploads/2026/02/4-20260220.txt
+- https://freesingbox.github.io/uploads/2026/03/0-20260304.txt
+- https://freesingbox.github.io/uploads/2026/03/1-20260304.txt
+- https://freesingbox.github.io/uploads/2026/03/2-20260304.txt
+- https://freesingbox.github.io/uploads/2026/03/3-20260304.txt
+- https://freesingbox.github.io/uploads/2026/03/4-20260304.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://freesingbox.github.io/uploads/2026/02/20260220.json
+- https://freesingbox.github.io/uploads/2026/03/20260304.json
 
 ## 更多Clash节点订阅 ：
 

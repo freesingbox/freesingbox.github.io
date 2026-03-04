@@ -284,34 +284,14 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的路由规则可设置哪些匹配条件？</h5></div>
-    <div class="panel-body">
-        路由规则支持按域名、IP 地址、端口、协议类型或用户标签进行匹配。结合策略组，可实现国内直连、国外代理或特定节点定向分流，满足不同网络需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Hysteria2 的多路复用功能有哪些好处？</h5></div>
     <div class="panel-body">
         多路复用允许多个短连接共享同一 QUIC 通道，减少握手延迟和资源消耗。在高并发或频繁短连接场景下，能显著提升吞吐量和稳定性，尤其适合游戏或即时通讯应用。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 使用 AEAD 加密的优势是什么？</h5></div>
+    <div class="panel-heading"><h5>Nekoray 与 Nekobox 有什么区别？</h5></div>
     <div class="panel-body">
-        AEAD 加密提供更强的安全性和抗重放攻击能力，同时隐藏流量特征，降低被 DPI 检测风险。在高封锁环境下使用，可提升连接稳定性和长期可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 如何通过节点测速自动切换最优线路？</h5></div>
-    <div class="panel-body">
-        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动选择最佳节点。保证网页浏览、视频播放和游戏流量走低延迟节点，提高访问速度和网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Vmess 节点可以通过 CDN 吗？</h5></div>
-    <div class="panel-body">
-        可以。Vmess 可通过 WebSocket 与 CDN 结合使用，只需将传输方式设置为 WS 并配置 host 与 path，即可实现流量中转。这样既能隐藏真实服务器，又能提升连接速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
-    <div class="panel-body">
-        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。<hr />    </div>
+        Nekoray 是基于 sing-box 的多平台代理客户端，支持 Windows、Linux 等系统；而 Nekobox 则是为 Android 设计的移动版本。两者共享相同的核心逻辑，均支持 VMess、VLess、Trojan 等协议，适合跨设备同步使用。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VMess 节点无法连接时应如何排查？</h5></div>
@@ -324,14 +304,34 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
         管理员可为每个用户设置带宽和流量上限，超出限制可自动降速或阻止访问，保证服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性和使用效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Vmess 节点可以通过 CDN 吗？</h5></div>
+    <div class="panel-body">
+        可以。Vmess 可通过 WebSocket 与 CDN 结合使用，只需将传输方式设置为 WS 并配置 host 与 path，即可实现流量中转。这样既能隐藏真实服务器，又能提升连接速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 使用 AEAD 加密的优势是什么？</h5></div>
+    <div class="panel-body">
+        AEAD 加密提供更强的安全性和抗重放攻击能力，同时隐藏流量特征，降低被 DPI 检测风险。在高封锁环境下使用，可提升连接稳定性和长期可用性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 如何通过节点测速自动切换最优线路？</h5></div>
+    <div class="panel-body">
+        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动选择最佳节点。保证网页浏览、视频播放和游戏流量走低延迟节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>何为 multiplex (mux)，启用后会有哪些利弊？</h5></div>
     <div class="panel-body">
         mux 是多路复用技术，可在单一连接上传输多路流量，从而减少握手次数与连接开销。优点是提升短连接并发效率，缺点是在丢包或单连接异常时可能影响多条会话并增加调试复杂度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 与 Nekobox 有什么区别？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的路由规则可设置哪些匹配条件？</h5></div>
     <div class="panel-body">
-        Nekoray 是基于 sing-box 的多平台代理客户端，支持 Windows、Linux 等系统；而 Nekobox 则是为 Android 设计的移动版本。两者共享相同的核心逻辑，均支持 VMess、VLess、Trojan 等协议，适合跨设备同步使用。    </div>
+        路由规则支持按域名、IP 地址、端口、协议类型或用户标签进行匹配。结合策略组，可实现国内直连、国外代理或特定节点定向分流，满足不同网络需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点测试？</h5></div>
+    <div class="panel-body">
+        Potatso Lite 支持手动测试单个节点延迟，但不支持批量自动测速。用户需逐个连接测试节点性能，或者结合其他客户端获取更全面的测速信息。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -360,16 +360,16 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-1-16-free-high-speed-nodes.htm" title="「1月16日」最高速度21.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月16日」最高速度21.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-25-sing-box-github.htm" title="「1月25日」最高速度20.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月25日」最高速度20.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-5-latest-sing-box-node.htm" title="「2月5日」最高速度22.9M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月5日」最高速度22.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-31-sing-box-node-windows.htm" title="「1月31日」最高速度21.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月31日」最高速度21.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-19-sing-box-node-share.htm" title="「1月19日」最高速度22.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月19日」最高速度22.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-15-sing-box-node.htm" title="「1月15日」最高速度21.3M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月15日」最高速度21.3M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-20-free-sing-box-node.htm" title="「2月20日」最高速度21.9M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月20日」最高速度21.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-3-sing-box-node-github.htm" title="「2月3日」最高速度22.3M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月3日」最高速度22.3M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-1-27-sing-box-github.htm" title="「1月27日」最高速度18.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月27日」最高速度18.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-16-sing-box-node-windows.htm" title="「2月16日」最高速度19.1M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月16日」最高速度19.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-5-latest-sing-box-node.htm" title="「2月5日」最高速度22.9M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月5日」最高速度22.9M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-25-sing-box-github.htm" title="「1月25日」最高速度20.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月25日」最高速度20.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-29-sing-box-node-github.htm" title="「1月29日」最高速度18.6M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月29日」最高速度18.6M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-23-sing-box-node-windows.htm" title="「1月23日」最高速度18.6M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月23日」最高速度18.6M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-7-free-high-speed-nodes.htm" title="「2月7日」最高速度19.7M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月7日」最高速度19.7M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-22-node-share-links.htm" title="「2月22日」最高速度22.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月22日」最高速度22.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-18-free-high-speed-nodes.htm" title="「2月18日」最高速度19.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月18日」最高速度19.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-2-4-free-subscribe-node.htm" title="「2月4日」最高速度21.7M/S，2025年Singbox每天更新免费机场订阅节点链接">「2月4日」最高速度21.7M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-17-sing-box-github.htm" title="「1月17日」最高速度21.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「1月17日」最高速度21.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -381,7 +381,7 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
