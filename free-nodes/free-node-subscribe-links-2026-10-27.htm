@@ -145,29 +145,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 如何通过策略组优化多应用分流？</h5></div>
-    <div class="panel-body">
-        QuantumultX 可以根据应用类型、端口和协议设置策略组，自动选择最优节点处理不同流量。这样可保证网页浏览、视频播放和游戏访问顺畅，提高整体网络效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的策略组如何提升分流效率？</h5></div>
     <div class="panel-body">
         策略组可以将多个节点或规则组合在一起，实现按条件自动选择最佳节点。通过策略组，用户无需手动切换节点即可根据延迟、地理位置或流量类型自动分流，提高网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 节点和 V2Ray 节点可以混合使用吗？</h5></div>
-    <div class="panel-body">
-        可以，但要使用支持多协议的客户端，如 Clash、Sing-box、Mihomo 等。这类客户端能在同一配置文件中加载不同协议的节点，通过规则分流让 SSR 与 V2Ray 同时工作。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 可以做什么？</h5></div>
     <div class="panel-body">
         Netch 是一款 Windows 平台的网络加速工具，支持基于 V2Ray、Socks5、Shadowsocks 等协议的代理。它可用于加速游戏、视频或网站访问，并能通过 TAP 模式实现系统级代理，广受游戏玩家喜爱。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 支持节点订阅的自动更新吗？</h5></div>
-    <div class="panel-body">
-        支持。用户可通过订阅 URL 批量更新节点，程序会自动下载并替换旧节点。定期自动更新可保证节点列表始终有效，减少手动维护的工作量，提高使用效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 是否支持节点手动排序？</h5></div>
@@ -180,14 +165,29 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         启用 TUN 模式会拦截并转发路由器上全部或选定流量，这会增加路由器 CPU 与内存负担，可能影响路由器其他服务表现。建议在性能足够的设备上启用，或仅对特定设备/端口进行分流。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
+    <div class="panel-heading"><h5>SSR 节点和 V2Ray 节点可以混合使用吗？</h5></div>
     <div class="panel-body">
-        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。<hr />    </div>
+        可以，但要使用支持多协议的客户端，如 Clash、Sing-box、Mihomo 等。这类客户端能在同一配置文件中加载不同协议的节点，通过规则分流让 SSR 与 V2Ray 同时工作。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hysteria2 与传统代理协议有何不同？</h5></div>
     <div class="panel-body">
         Hysteria2 使用基于 QUIC 的高性能传输协议，可显著降低延迟并提升抗干扰能力。它特别适合高丢包或高延迟网络环境，提供流畅的浏览和视频播放体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 支持节点订阅的自动更新吗？</h5></div>
+    <div class="panel-body">
+        支持。用户可通过订阅 URL 批量更新节点，程序会自动下载并替换旧节点。定期自动更新可保证节点列表始终有效，减少手动维护的工作量，提高使用效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
+    <div class="panel-body">
+        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 如何通过策略组优化多应用分流？</h5></div>
+    <div class="panel-body">
+        QuantumultX 可以根据应用类型、端口和协议设置策略组，自动选择最优节点处理不同流量。这样可保证网页浏览、视频播放和游戏访问顺畅，提高整体网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 的节点分类功能有哪些好处？</h5></div>
@@ -240,16 +240,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-21.htm" title="「9月21日」最高速度18.1M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月21日」最高速度18.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-14-free-subscribe-node.htm" title="「10月14日」最高速度19.2M/S，2025年Singbox每天更新免费机场订阅节点链接">「10月14日」最高速度19.2M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-10-27.htm" title="「10月27日」最高速度21.2M/S，2025年Singbox每天更新免费机场订阅节点链接">「10月27日」最高速度21.2M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-11.htm" title="「9月11日」最高速度21.1M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月11日」最高速度21.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-10-7.htm" title="「10月7日」最高速度18.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「10月7日」最高速度18.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-4-free-sing-box-node.htm" title="「10月4日」最高速度19M/S，2025年Singbox每天更新免费机场订阅节点链接">「10月4日」最高速度19M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/latest-sing-box-node-2026-9-23.htm" title="「9月23日」最高速度21.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月23日」最高速度21.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-10-free-sing-box-node.htm" title="「9月10日」最高速度20.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月10日」最高速度20.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-25.htm" title="「10月25日」最高速度22.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「10月25日」最高速度22.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-24-sing-box-github.htm" title="「9月24日」最高速度20M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月24日」最高速度20M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/sing-box-node-windows-2026-10-17.htm" title="「10月17日」最高速度18.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「10月17日」最高速度18.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-15.htm" title="「9月15日」最高速度19.4M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月15日」最高速度19.4M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-28-sing-box-node.htm" title="「9月28日」最高速度22.6M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月28日」最高速度22.6M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-19.htm" title="「9月19日」最高速度18.5M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月19日」最高速度18.5M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/sing-box-node-share-2026-9-27.htm" title="「9月27日」最高速度18.1M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月27日」最高速度18.1M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-4-today-sing-box-node.htm" title="「11月4日」最高速度22.3M/S，2025年Singbox每天更新免费机场订阅节点链接">「11月4日」最高速度22.3M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-29.htm" title="「9月29日」最高速度22.8M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月29日」最高速度22.8M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-2-sing-box-node.htm" title="「9月2日」最高速度20.6M/S，2025年Singbox每天更新免费机场订阅节点链接">「9月2日」最高速度20.6M/S，2025年Singbox每天更新免费机场订阅节点链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -261,7 +261,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">5</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
